@@ -4,9 +4,11 @@ var Collection = function(source) {
     this.collection = {};
 
     this.add = function(lead) {
-        // By using the ID as a key, the latest ID will take its place.
-        this.collection[lead._id] = new Lead(lead);
-        return this;
+        var thisLead = new Lead(lead);
+
+        if(!this.fetch(lead._id) || this.fetch(lead._id).isOlderThan(thisLead)) {
+            this.collection[lead._id] = thisLead;
+        }
     };
 
     this.delete = function(leadID) {
@@ -39,7 +41,7 @@ var Collection = function(source) {
                         collection.delete(thatLead._id);
                     }
                 }
-            };
+            }
         }
     };
 
