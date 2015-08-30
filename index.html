@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <!-- Load Library Dependencies -->
+        <script src="js/libraries/jquery-2.1.4.min.js" type="text/javascript"></script>
+        <script src="js/libraries/underscore-min.js" type="text/javascript"></script>
+        <script src="js/libraries/handlebars.js" type="text/javascript"></script>
+        <script src="js/libraries/moment.js" type="text/javascript"></script>
+
+        <!-- Load JS Application -->
+        <script src="js/leads.json" type="text/javascript"></script>
+        <script src="js/lead.js" type="text/javascript"></script>
+        <script src="js/collection.js" type="text/javascript"></script>
+
+        <!-- Load Templates -->
+        <script id="template" type="text/x-handlebars-template">
+            <table>
+                {{#each leads}}
+                    <tr>
+                        <td>
+                            <h3>{{firstName}} {{lastName}}</h3>
+                            <p><strong>ID:</strong> {{_id}}</p>
+                            <p><strong>Email:</strong> {{email}}</p>
+                            <p><strong>Address:</strong> {{address}}</p>
+                            <p><strong>Entry Date:</strong> {{entryDate}}</p>
+                            <hr />
+                        </td>
+                    </tr>
+                {{/each}}
+            </table>
+        </script>
+    </head>
+    <body>
+        <div id="container"></div>
+    </body>
+
+    <!-- Run Application -->
+    <script src="js/dedup.js" type="text/javascript"></script>
+</html>
